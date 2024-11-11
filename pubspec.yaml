@@ -30,6 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    image_picker: ^1.1.2
+    flutter_gemini: ^2.0.5
+    google_generative_ai: ^0.4.6
+    flutter_gemini_bot: ^0.0.4
+
 
 
   # The following adds the Cupertino Icons font to your application.
