@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
+
 
 class HomePage extends StatefulWidget { 
   const HomePage({super.key});
@@ -8,6 +10,18 @@ class HomePage extends StatefulWidget {
   @override
     State<HomePage> createState() => _HomePageState();
 }
+
+ final model = GenerativeModel(
+   model: 'gemini-1.5-flash',
+    apiKey: apiKey,
+    );
+   final prompt = 'Write a story about a magic backpack.';
+
+   final response = await model.generateContent([Content.text(prompt)]);
+   print(response.text);
+
+
+
 
 class _HomePageState extends State<HomePage> {
   final Gemini gemini = Gemini.instance;
