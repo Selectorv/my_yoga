@@ -1,139 +1,139 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+//import 'dart:io';
+//import 'package:flutter/foundation.dart';
+//import 'package:flutter/material.dart';
+//import 'package:google_generative_ai/google_generative_ai.dart';
 
 
-class HomePage extends StatefulWidget { 
-  const HomePage({super.key});
+//class HomePage extends StatefulWidget { 
+ // const HomePage({super.key});
 
-  @override
-    State<HomePage> createState() => _HomePageState();
-}
+ // @override
+    //State<HomePage> createState() => _HomePageState();
+//}
 
- final model = GenerativeModel(
-   model: 'gemini-1.5-flash',
-    apiKey: apiKey,
-    );
-   final prompt = 'Write a story about a magic backpack.';
+ //final model = GenerativeModel(
+  // model: 'gemini-1.5-flash',
+   // apiKey: apiKey,
+    //);
+  // final prompt = 'Write a story about a magic backpack.';
 
-   final response = await model.generateContent([Content.text(prompt)]);
-   print(response.text);
-
-
+   //final response = await model.generateContent([Content.text(prompt)]);
+   //print(response.text);
 
 
-class _HomePageState extends State<HomePage> {
-  final Gemini gemini = Gemini.instance;
 
-  List<ChatMessage> messages = [];
-  ChatUser currentUser = ChatUser(id: "0", firstName: "User");
-  ChatUser geminiUser = ChatUser(
-    id:"1",
-     firstName: "Gemini",
-     profileImage:"https://seeklogo.com/images/G/google-gemini-logo-AS78782669-seeklogo.com.png",
-     );
 
-  @override
-   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "Women and girls healthcare"
-            ),
-          ),
-          body: _buildUI(),
-        );
-      }
+//class _HomePageState extends State<HomePage> {
+ // final Gemini gemini = Gemini.instance;
 
-      Widget _buildUI() {
-        return DashChat(
-          inputOptions: InputOptions(trailing: [
-            IconButton(
-              onPressed: _sendMediaMessage, 
-            icon:const Icon(
-             Icons.image,
-            )
-            )
-          ]),
-          currentUser:currentUser, 
-          onSend: _sendMessage, 
-          messages: messages,
-          );
-      }
-      void _sendMessage(ChatMessage chatMessage) {
-        setState(() {
-          messages = [chatMessage, ...messages];
-        });
-        try {
-          String question = chatMessage.text;
-          List<Uint8List>? images;
-          if (chatMessage.medias?.isNotEmpty ?? false) {
-           images = [
-            File(chatMessage.medias!.first.url).readAsBytesSync(),
-           ];
-          }
-          gemini
-          .streamGenerateContent(
-            question, 
-            images: images,
-            )
-            .listen((event) {
-            ChatMessage? lastMessage = messages.firstOrNull;
-            if (lastMessage != null && lastMessage.user == geminiUser) {
-              lastMessage = messages.removeAt(0);
-              String response = event.content?.parts
-              ?.fold("", (previous, current) => "$previous ${current.text}") ??
-              "";
-              lastMessage.text += response;
-              setState(() {
-                messages = [lastMessage!, ...messages];
-              },
-              );
+ // List<ChatMessage> messages = [];
+ // ChatUser currentUser = ChatUser(id: "0", firstName: "User");
+ // ChatUser geminiUser = ChatUser(
+    //id:"1",
+    // firstName: "Gemini",
+    // profileImage:"https://seeklogo.com/images/G/google-gemini-logo-AS78782669-seeklogo.com.png",
+    // );
 
-            }else{
-              String response = event.content?.parts
-              ?.fold("", (previous, current) => "$previous ${current.text}") ?? 
-              "";
-              ChatMessage message = chatMessage
-              (user: geminiUser, createdAt: DateTime.now(), 
-              text: response,
-              );
-              setState(() {
-                messages = [message, ...messages];
-              });
-            }
-           });
-        } catch (e) {
+  //@override
+  // Widget build(BuildContext context) {
+     // return Scaffold(
+        //appBar: AppBar(
+         // centerTitle: true,
+         // title: const Text(
+           // "Women and girls healthcare"
+           // ),
+          //),
+         // body: _buildUI(),
+        //);
+     // }
+
+     // Widget _buildUI() {
+        //return DashChat(
+          //inputOptions: InputOptions(trailing: [
+           // IconButton(
+             // onPressed: _sendMediaMessage, 
+           // icon:const Icon(
+           //  Icons.image,
+            //)
+            //)
+         // ]),
+         // currentUser:currentUser, 
+         // onSend: _sendMessage, 
+         // messages: messages,
+         // );
+     // }
+     // void _sendMessage(ChatMessage chatMessage) {
+        //setState(() {
+         // messages = [chatMessage, ...messages];
+       // });
+       // try {
+         // String question = chatMessage.text;
+         // List<Uint8List>? images;
+         // if (chatMessage.medias?.isNotEmpty ?? false) {
+         //  images = [
+          //  File(chatMessage.medias!.first.url).readAsBytesSync(),
+          // ];
+         // }
+          //gemini
+          //.streamGenerateContent(
+           // question, 
+           // images: images,
+           // )
+           // .listen((event) {
+           // ChatMessage? lastMessage = messages.firstOrNull;
+           // if (lastMessage != null && lastMessage.user == geminiUser) {
+            //  lastMessage = messages.removeAt(0);
+            //  String response = event.content?.parts
+            //  ?.fold("", (previous, current) => "$previous ${current.text}") ??
+             // "";
+             // lastMessage.text += response;
+             // setState(() {
+              //  messages = [lastMessage!, ...messages];
+              //},
+              //);
+
+            //}else{
+             // String response = event.content?.parts
+             // ?.fold("", (previous, current) => "$previous ${current.text}") ?? 
+             // "";
+             // ChatMessage message = chatMessage
+             // (user: geminiUser, createdAt: DateTime.now(), 
+             // text: response,
+             // );
+             // setState(() {
+              //  messages = [message, ...messages];
+              //});
+           // }
+           //});
+        //} catch (e) {
           // ignore: avoid_print
-          print(e);
-        }
-      }
+         // print(e);
+       // }
+      //}
       
       // ignore: non_constant_identifier_names
-      void _sendMediaMessage(ImageSource, MediaType) async {
-        ImagePicker picker = ImagePicker();
-        XFile? file = await picker.pickImage(
-          source: ImageSource.gallery,
-          );
-          if (file != null) {
-            ChatMessage chatMessage = ChatMessage(
-              user: currentUser, 
-              createdAt: DateTime.now(), 
-              text:"Describe this picture?",
-              medias: [
-                 ChatMedia(
-                  url: file.path, 
-                  fileName: "", 
-                  type: MediaType.image,
-                )
-              ],
-             );
-             _sendMessage(chatMessage);
-          }
-         }
-        }
+      //void _sendMediaMessage(ImageSource, MediaType) async {
+      //  ImagePicker picker = ImagePicker();
+      //  XFile? file = await picker.pickImage(
+         // source: ImageSource.gallery,
+         // );
+         // if (file != null) {
+           // ChatMessage chatMessage = ChatMessage(
+            //  user: currentUser, 
+             // createdAt: DateTime.now(), 
+             // text:"Describe this picture?",
+             // medias: [
+               //  ChatMedia(
+                //  url: file.path, 
+                 // fileName: "", 
+                //  type: MediaType.image,
+             //   )
+            //  ],
+            // );
+           //  _sendMessage(chatMessage);
+        //  }
+       //  }
+      //  }
 
 
   

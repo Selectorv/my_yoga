@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class IntroScreen extends StatelessWidget {
+  // ignore: use_super_parameters
+  const IntroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class MainPage extends StatelessWidget {
               "Getting Started",
              style:TextStyle(fontSize: 20),
              ),
-              ))      
+           ))      
         ],
       ),
      );

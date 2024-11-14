@@ -25,14 +25,539 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="my_yoga">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <!--<link rel="stylesheet" href="../web/style.css">-->
+  
+  
+  
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
+
   <title>my_yoga</title>
   <link rel="manifest" href="manifest.json">
+
+    <style>
+      
+        body {
+          width: 100%;
+            font-family: sans-serif;
+        }
+
+        header{
+    
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 16px;
+    display: flex;
+    text-align: justify;
+    padding: 30px;
+    margin-top: 0;
+    justify-content: space-between;
+    box-shadow: 0px 3px 10px 0 rgb(80,119,242,0.3);
+    z-index: 1;
+    
+}
+
+header .logo {
+    text-decoration: none;
+    font-size: 35px;
+    margin-top: 0;
+}
+
+header .logo h2{
+    margin-top: 0;
+    font-size: 38px;
+    color: purple;
+}
+header .logo h2::first-letter{
+    font-size: 43px;
+    color: red;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    gap: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-left: 5rem;
+}
+.navbar ul li a{
+    border-right: 1px solid #bbb;
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+    
+}
+.navbar ul li a:hover{
+    color: rgb(9, 87, 113);
+}
+
+
+        .dropdown_menu {     
+    display: hidden;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #fff;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);     
+}
+.dropdown_menu li a{
+    padding-top: 4rem;
+    padding: 0.4rem;
+    display: flex;
+    align-items: left;
+    justify-content:left ;
+    text-decoration: none;
+    margin-top: 20px;
+    width: 100%;
+}
+.dropdown_menu.open {
+    height: 100vh;
+}
+.dropdown_menu.open li a{
+    font-weight: 400;
+    color: #000;
+    margin-top: 10px;
+}
+.dropdown_menu li{
+    padding: 0.1rem;
+    display: flex;
+    align-items: left;
+    justify-content:left ;
+    text-decoration: none;
+}
+.dropdown_menu li a:hover{
+    background-color: rgb(26, 131, 167);
+    color: #fff;
+}
+.mobile .inputSearch{
+    height: 35px;
+    width: 300px;
+}
+.dropdown_menu h3{
+    text-align: center;
+    background-color: rgb(26, 131, 167);
+    color: #fff;
+    padding: 0.7rem;
+}
+ .toggle_btn{
+  padding: 1.8rem;
+    margin-right: 10px;
+    cursor: pointer;
+    
+}      
+
+     
+       .info_container h1, h2, h3 {
+            text-align: center;
+            padding-left: 20px;
+            
+        }
+        .info_container p{
+            padding-left: 20px;
+        }
+      
+        
+
+        .info_container {
+          
+          width: 74%;
+          float: right;
+          margin-top: 100px;
+          
+            /*display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px;*/
+        }
+
+        .info_container .section {
+            margin-bottom: 20px;
+            margin-top: 10px;
+           /* border: 1px solid #ccc;
+            border-radius: 5px;*/
+        }
+
+        .side-bar{
+          position: fixed;
+        float: left;
+        width: 23%;
+        height: 100vh;
+        top: 80px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-right: 1px solid rgb(196, 196, 196);
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        z-index: 1; 
+        
+      
+      
+     } 
+    
+
+     .side-bar .logo{
+        display: flex;
+        align-items: center;
+        color: black;
+        
+        margin-left: 20px;
+     }
+    
+
+     .side-bar .logo h2{
+        font-size: 1.15rem;
+        font-weight: 600;
+        
+        font-family:  Georgia, 'Times New Roman';
+        
+     }
+     .side-bar .links{
+        list-style-type: none;
+        margin-top: 20px;
+        height: calc(100% - 140px);
+        color: #000;
+       
+     }
+     .side-bar .links h4{
+        color: #000;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        
+     }
+     .side-bar .links li{
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+     }
+     .side-bar .links li:hover{
+        background: lightgray;
+     }
+     .side-bar .links li i{
+        padding: 12px 10px;
+     }
+
+     .side-bar .links li a{
+        margin-top: 10px;
+        color: #000;
+        text-decoration: none;
+        text-align: left;
+        font-weight: 500;
+        padding: 10px;
+        white-space: nowrap;
+        
+     }
+     .side-bar:hover{
+        background-color: #e7e7e7;
+     }
+
+   
+
+.container{
+            width: 90%;
+            height: auto;
+            margin: 0 auto;
+            padding: 10px 20px;
+        }
+        .about{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .about-image{
+            flex: 1;
+            margin-right: 40px;
+            overflow: hidden;
+            place-items: center;
+        }
+        .about-image img{
+            width: min(20rem, 90%);
+            display: block;
+            transition: 0.5s ease;
+            place-items: center;
+        }
+        .about-image:hover img{
+            transform: scale(1.2);
+        }
+        .about-content{
+            flex: 1;
+            margin-top: 0;
+        }
+        .about-content h2{
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: rgb(60, 59, 59);
+        }
+        .about-content p{
+            margin-top: 0;
+            padding-top: 0;
+            font-size: 18px;
+            line-height: 1.5;
+           
+        }
+        .about-content p a{
+            text-decoration: underline;
+            color: #4caf50;
+        }
+        .about-content .read-more{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:  #4caf50;
+            color: #fff;
+            font-size: 19px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: 0.3s ease;
+        }
+
+   
+     @media(max-width:760px){
+     .side-bar{
+         display: none;
+     }
+     .info_container{
+      width: 100%;
+     }
+
+            .container{
+                padding: 20px;
+            }
+            .about{
+            
+                flex-direction: column;
+            }
+            .about-image{
+                margin-right: 0px;
+                margin-bottom: 20px;
+            }
+            .about-image img{
+                width: 20rem, 85%;
+            }
+            .about-content p{
+                padding: 0px;
+                font-size: 16px;
+                margin-bottom: 30%;
+            }
+            .about-content .read-more{
+                font-size: 16px;
+            }
+        
+
+        }
+      
+     
+
+    </style>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+
+  <header>
+    <div class="logo">
+        <h2>WG</h2>
+    </div>
+        
+
+
+
+                   
+    
+   <div class="navbar">
+       <ul class="links">
+        <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Prevention</a></li>
+           <li><a href="index.html"> Accessibility</a></li>
+            <li><a href="index.html">Promotion</a></li>
+           <li><a href="index.html">Effects</a></li>
+           <li><a href="index.html">Challenges</a></li>
+
+         
+          
+          
+       </ul>
+   </div>
+
+   <div class="toggle_btn">
+    <i class="fa-solid fa-bars"></i>      
+</div>
+
+
+<div class="dropdown_menu"> 
+    
+        <ul>
+        <li><a href="#">Gender equality</a></li>
+        <li><a href="#">Women and girls Safety</a></li>
+        <li><a href="#">Economic equality and leadership</a></li>
+        <li><a href="index.html">Women and girls healthcare</a></li>
+        <br>
+        <hr>
+       
+        </ul>
+</div>
+</div>
+</header> 
+
+
+  <div class="side-bar">
+     
+    <ul class="links">
+      <h4>Other Category</h4>
+      <hr>
+      <li>
+        
+               <a href="/">Gender equity</a></li>
+         <li>
+
+          <li>
+              
+              <a href="#">Women and girl's safety</a>
+      </li>
+    
+
+      <li>
+          
+          <a href="#">Women and girls healthcare</a></li>
+
+          <li> 
+          
+          <a href="#"> Women and girl's Economic <br>Equality and Leadership</a></li>
+
+          <li> 
+
+        
+                  <a href="#">Gender equality</a></li>
+
+                  <li>
+                      
+                      <a href="#">About</a>
+              </li>
+
+              <li>
+                  
+                  <a href="#">Contacts</a>
+              </li>
+
+
+
+          </ul>
+  
+</div>
+
+
+ 
+
+    <div class="info_container">
+        <h1>Gender Equality in Women and Girls Healthcare</h1>
+
+        <section class="section">
+            <h2>The Importance of Gender Equality in Healthcare</h2>
+            <p>Gender equality in healthcare means ensuring that women and girls have equal access to quality healthcare services, 
+                regardless of their gender. This includes:</p>
+
+                <ul>
+                    <li>Equal access to preventative care, including screenings and vaccinations</li>
+                    <li>Equitable treatment for chronic conditions</li>
+                    <li>Access to reproductive health services, including contraception and safe abortion</li>
+                    <li>Gender-sensitive care that addresses the unique health needs of women and girls</li>
+                </ul>
+
+    
+                <section> 
+                        <div class="container">
+                               <div class="about">
+                                <div class="about-image">
+                                    <img src="../images/Rural women healthcare.jpg" alt="">   
+                            
+            
+                                </div>
+                                <div class="about-content">
+                                    <h2>Rural women healthcare</h2>
+                                    <p><i>Provision of affordable healthcare by NGO (non-govermental organization)</i> <br>
+                                        <cite>Namasoli despensary in Kakamega county, Kenya.</cite>
+                                    </p>
+                                    
+                                     
+                                </div>
+                            </section>
+
+        </section>
+
+        <section class="section">
+            <h2>Challenges to Gender Equality in Healthcare</h2>
+            <p>Women and girls often face significant barriers to accessing healthcare, including:</p>
+
+
+            <ul>
+                <li>Financial constraints</li>
+                <li>Limited access to healthcare providers, especially in rural areas</li>
+                <li>Cultural and social norms that restrict women's access to healthcare</li>
+                <li>Discrimination and bias from healthcare providers</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>The Impact of Gender Inequality in Healthcare</h2>
+            <p>Gender inequality in healthcare has serious consequences for women and girls, including:</p>
+            <ul>
+
+               
+
+                <li>Increased rates of preventable diseases and deaths</li>
+                <li>Higher rates of chronic conditions</li>
+                <li>Increased risk of complications during pregnancy and childbirth</li>
+                <li>Reduced economic opportunities</li>
+            </ul>
+               
+            <section> 
+                <div class="container">
+                       <div class="about">
+                        <div class="about-image">
+                            <img src="../images/Managing chronic disease.jpg" alt="">   
+                    
+    
+                        </div>
+                        <div class="about-content">
+                            <h2>Free HPV vaccination for all girls between the age of 10-14 years</h2>
+                            <p>Advocating for policies that promote girl's health and rights has led reduction of some chronic illness
+                                in Kenya.
+                            </p>
+                             
+                        </div>
+                    </section>
+
+
+           
+        </section>
+
+        <section class="section">
+            <h2>Promoting Gender Equality in Healthcare</h2>
+            <p>There are many ways to promote gender equality in healthcare, including:</p>
+            <ul>
+                <li>Expanding access to affordable healthcare services</li>
+                <li>Training healthcare providers on gender-sensitive care</li>
+                <li>Raising awareness about the importance of gender equality in healthcare</li>
+                <li>Advocating for policies that promote women's health and rights</li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
+
+

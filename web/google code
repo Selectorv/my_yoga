@@ -1,0 +1,58 @@
+<!--This HTML code provides a basic structure for a website page that addresses gender equality in women and girls healthcare. It covers key aspects such as:
+
+//Introduction: The importance of gender equality in healthcare
+
+//Challenges: Barriers faced by women and girls
+
+//Impact: Consequences of gender inequality
+
+//Solutions: Steps towards promoting equality
+
+//You can customize this code further by:
+
+//Adding more content: Include specific examples, statistics, or personal stories.
+
+//Styling: Change fonts, colors, and layout for a better visual appeal.
+
+//Adding images: Use relevant images to enhance the content.
+
+//Adding links: Provide links to organizations working towards gender equality in healthcare.
+
+Remember, this is just a starting point. You can build upon this code and expand it to create a comprehensive and informative resource on the topic.
+
+
+//import com.google.ai.client.generativeai.GenerativeModel
+
+val model = GenerativeModel(
+  "gemini-1.5-flash",
+  // Retrieve API key as an environmental variable defined in a Build Configuration
+  // see https://github.com/google/secrets-gradle-plugin for further instructions
+  BuildConfig.geminiApiKey,
+  generationConfig = generationConfig {
+    temperature = 1f
+    topK = 40
+    topP = 0.95f
+    maxOutputTokens = 8192
+    responseMimeType = "text/plain"
+  },
+)
+
+val chatHistory = listOf(
+  content("user") {
+    text("gender equality on women and girls health care using html code")
+  },
+  content("model") {
+    text("```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Gender Equality in Women and Girls Healthcare</title>\n    <style>\n        body {\n            font-family: sans-serif;\n        }\n\n        h1, h2, h3 {\n            text-align: center;\n        }\n\n        .container {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n            margin: 20px;\n        }\n\n        .section {\n            margin-bottom: 20px;\n            padding: 20px;\n            border: 1px solid #ccc;\n            border-radius: 5px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Gender Equality in Women and Girls Healthcare</h1>\n\n        <section class=\"section\">\n            <h2>The Importance of Gender Equality in Healthcare</h2>\n            <p>Gender equality in healthcare means ensuring that women and girls have equal access to quality healthcare services, regardless of their gender. This includes:</p>\n            <ul>\n                <li>Equal access to preventative care, including screenings and vaccinations</li>\n                <li>Equitable treatment for chronic conditions</li>\n                <li>Access to reproductive health services, including contraception and safe abortion</li>\n                <li>Gender-sensitive care that addresses the unique health needs of women and girls</li>\n            </ul>\n        </section>\n\n        <section class=\"section\">\n            <h2>Challenges to Gender Equality in Healthcare</h2>\n            <p>Women and girls often face significant barriers to accessing healthcare, including:</p>\n            <ul>\n                <li>Financial constraints</li>\n                <li>Limited access to healthcare providers, especially in rural areas</li>\n                <li>Cultural and social norms that restrict women's access to healthcare</li>\n                <li>Discrimination and bias from healthcare providers</li>\n            </ul>\n        </section>\n\n        <section class=\"section\">\n            <h2>The Impact of Gender Inequality in Healthcare</h2>\n            <p>Gender inequality in healthcare has serious consequences for women and girls, including:</p>\n            <ul>\n                <li>Increased rates of preventable diseases and deaths</li>\n                <li>Higher rates of chronic conditions</li>\n                <li>Increased risk of complications during pregnancy and childbirth</li>\n                <li>Reduced economic opportunities</li>\n            </ul>\n        </section>\n\n        <section class=\"section\">\n            <h2>Promoting Gender Equality in Healthcare</h2>\n            <p>There are many ways to promote gender equality in healthcare, including:</p>\n            <ul>\n                <li>Expanding access to affordable healthcare services</li>\n                <li>Training healthcare providers on gender-sensitive care</li>\n                <li>Raising awareness about the importance of gender equality in healthcare</li>\n                <li>Advocating for policies that promote women's health and rights</li>\n            </ul>\n        </section>\n    </div>\n</body>\n</html>\n```\n\nThis HTML code provides a basic structure for a website page that addresses gender equality in women and girls healthcare. It covers key aspects such as:\n\n* **Introduction:** The importance of gender equality in healthcare\n* **Challenges:** Barriers faced by women and girls\n* **Impact:** Consequences of gender inequality\n* **Solutions:** Steps towards promoting equality\n\nYou can customize this code further by:\n\n* **Adding more content:** Include specific examples, statistics, or personal stories.\n* **Styling:** Change fonts, colors, and layout for a better visual appeal.\n* **Adding images:** Use relevant images to enhance the content.\n* **Adding links:** Provide links to organizations working towards gender equality in healthcare.\n\nRemember, this is just a starting point. You can build upon this code and expand it to create a comprehensive and informative resource on the topic. \n")
+  },
+)
+
+val chat = model.startChat(chatHistory)
+
+// Note that sendMessage() is a suspend function and should be called from
+// a coroutine scope or another suspend function
+val response = chat.sendMessage("INSERT_INPUT_HERE")
+
+// Get the first text part of the first candidate
+println(response.text)
+// Alternatively
+println(response.candidates.first().content.parts.first().asTextOrNull())
