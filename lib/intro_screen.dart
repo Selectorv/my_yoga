@@ -11,7 +11,7 @@ class IntroScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset("assets/images/Natured logo.png"), 
+          Image.asset("../../images/Natured logo.png"), 
           const SizedBox(
             height: 30,
           ),
