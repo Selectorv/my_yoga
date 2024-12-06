@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+.intro{
+    background-color: aliceblue;
+    color: #072c69;
+    text-align: center;
+    margin: 20px;
+    
+}
+.container{
+    width: 690px;
+    background: #fff;
+    border-radius: 7px;
+    padding: 30px;
+    margin-top: 5%;
+    margin-left: 20%;
+    
+}
+.wrapper{
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+.wrapper .text-input{
+    display: flex;
+    border-bottom:  1px solid #bbb;
+}
+.text-input .to-text{
+    border-radius: 0px;
+    border-left: 1px solid #bbb;
+}
+.text-input textarea{
+    height: 250px;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 18px;
+    border-radius: 5px;
+    background: none;
+    padding: 10px 15px;
+}
+.controls, li, .icons, .icons i{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.controls{
+    list-style: none;
+    padding: 12px 15px;
+}
+.controls .row.from .icons{
+    padding-right: 15px;
+    border-right: 1px solid #bbb;
+}
+.controls .row.to .icons{
+    padding-left: 15px;
+    border-left: 1px solid #bbb;
+}
+
+
+.controls .icons{
+    width: 38%;
+}
+.controls .icons i{
+    width: 50px;
+    color: #9f9f9f;
+    font-size: 14px;
+    cursor: pointer;
+    justify-content: center;
+}
+.controls .row select{
+    border: none;
+    outline: none;
+    font-size: 18px;
+    background: none;
+}
+.controls .exchange{
+    color: #585757;
+    font-size: 16px;
+    cursor: pointer;
+}
+.container button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+    background: linear-gradient(to right,#072c69, #4285f4,red);
+}
+
+@media screen and (max-width: 560px){
+ 
+    .container,
+    .controls, .controls .exchange,
+     .text-input textarea,
+      .row.from, .row.to, 
+       .controls .row.to .icons i{
+        width: min(25rem, 100%);
+        
+            
+    }
+   
+    .controls .row select, 
+    .exchange{
+        font-size: 12px;
+    }
+    .controls .icons i{
+        font-size: 10px;
+        
+    }
+
+   
+    .controls .row.from .icons{
+        padding-right: 10px;
+        border-right: 1px solid #bbb;
+    }
+    .controls .row.to .icons{
+        padding-left: 0px;
+        border-left: 1px solid #bbb;
+    }
+  .controls .exchange{
+    font-size: 12px;
+  }
+  .controls .icons i{
+    width: 30px;
+    color: #9f9f9f;
+    font-size: 12px;
+    cursor: pointer;
+    justify-content: center;
+}
+}
+
+@media (max-width:870px) {
+.container{
+width: 100%;
+margin: 0;
+    
+}
+}
+
+ 
+     
+

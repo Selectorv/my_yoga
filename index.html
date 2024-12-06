@@ -1,16 +1,162 @@
-# my_yoga
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-A new Flutter project.
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-## Getting Started
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-This project is a starting point for a Flutter application.
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
 
-A few resources to get you started if this is your first Flutter project:
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  <!--<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">-->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="e_learning">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+  integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LANGUAGE APP/icons/favicon-16x16.png"/>
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>e_learning</title>
+  <link rel="manifest" href="manifest.json">
+
+
+
+  
+    </style>
+</head>
+<body>
+
+  <!--<a href="LANGUAGE APP/LYL.html"><button>Learn Your Language</button></a>-->
+      
+  <header class="header">
+
+    <div class="social-icons">
+      <ul>
+        <li>
+
+          <i class="fa-solid fa-phone" style="color: black;">
+            <a href="254-717066588">254-717066588</a></i> 
+
+          <i class="fa-brands fa-whatsapp " style="color: green;">
+          <a href="https://www.whatsapp.com">whatsapp</a></i>
+
+      <i class="fa-brands fa-twitter" style="color: black;"> 
+      <a href="https://www.mobiletwitter.com">twitter</a></i>
+
+      
+
+      
+      <i class="fa-brands fa-linkedin" style="color: #146af3;">
+      <a href="https://linkedin.com"> Linkedin</a></i>
+
+      
+          <i class="fa-brands fa-square-facebook" style="color: blue;">
+              <a href="https://facebook.com">Facebook</a></i>
+
+
+              <i class="fa-brands fa-youtube" style="color: red;">
+              <a href="https://youtube.com"> YouTube</a></i>
+              <br>
+      
+        </li>
+      </ul>
+    
+
+
+    </div>
+   
+     <!--<button><a href="LANGUAGE APP/lyl.html">Learn Your Language<br>LYL</a></button>-->
+    
+    <button><a href="#">Register Here</a></button>
+
+
+    <!--greetings-->
+    <h2 class="title">WOMEN AND GIRL'S HEALTHCARE</h2>
+    <h4 class="subtitle">How can I help you?</h4>
+      
+
+    <!--Suggestion list-->
+    <ul class="suggestion-list">
+      <li class="suggestion">
+      <h4 class="text">How  can I access equitable treatment for chronic conditions</h4>
+    <span class="icon material-symbols-rounded">syringe</span>  
+      </li>
+
+      <li class="suggestion">
+       <h4 class="text">What is Taifa Healthcare?</h4>
+       <span class="icon  material-symbols-rounded">ambulance</span>
+       </li>
+
+      <li class="suggestion">
+         <h4 class="text">What does Linda mama innitiative offer?</h4>
+         <span class="icon  material-symbols-rounded ">face</span>
+
+       <li class="suggestion">
+          <h4 class="text">Is free HPV Vaccination for  girls safe?</h4>
+          <span class="icon  material-symbols-rounded ">stethoscope</span>
+          </li>
+
+    </ul>
+  </header>
+
+  <!--chart list / container-->
+  <div class="chat-list">
+
+
+  </div>
+
+  <!--Typing area-->
+    <div class="typing-area">
+      <form action="#" class="typing-form">
+        <div class="input-wrapper">
+          <input type="text"   placeholder="Enter prompt here"   class="typing-input" required>
+          <button class="  icon material-symbols-rounded ">send</button>
+
+        </div>
+        <div class="action-buttons">
+          <span id="toggle-theme-button"  class="icon  material-symbols-rounded">light_mode</span>
+          <span id="delete-chat-button"  class=" icon material-symbols-rounded">  delete </span>
+        </div>
+      </form>
+
+
+      <p class="disclaimer-text">
+        Gemini may display innacurate info, including about people, so double-check its response.
+      </p>
+
+    </div>
+  
+
+     <script src="script.js"></script>
+
+  <!--<script src="flutter_bootstrap.js" async></script>-->
+</body>
+</html>
